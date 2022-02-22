@@ -3,10 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import todoReducer from './state-management/reducer';
+import {combineReducers,compose,createStore} from 'redux';
+import {Provider} from 'react-redux';
+
+let rootreducer = combineReducers({
+  users:todoReducer
+  })
+
+ const store = createStore(rootreducer);
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
